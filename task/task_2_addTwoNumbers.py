@@ -1,4 +1,4 @@
-from leetcode.lib.lib_listnode import *
+from codes_stuff.lib.lib_listnode import *
 
 
 class Solution(object):
@@ -28,8 +28,8 @@ class Solution(object):
 
 
 def test_2(test_data, solution_num):
-    from leetcode.utils.timer import timer
-    from leetcode.utils.misc import log_data
+    from codes_stuff.utils.timer import timer
+    from codes_stuff.utils.misc import log_data
     timer_result = []
     for num in solution_num:
         _timer = timer(num)

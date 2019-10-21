@@ -1,6 +1,6 @@
-from leetcode.utils.misc import log_info
-from leetcode.test_data import test_data
-from leetcode.task import *
+from codes_stuff.utils.misc import log_info
+from codes_stuff.test_data import test_data
+from codes_stuff.task import *
 
 
 def main():
