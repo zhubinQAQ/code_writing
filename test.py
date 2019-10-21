@@ -6,7 +6,7 @@ from leetcode.task import *
 def main():
     log_info(' ===== start test =====')
 
-    timers = test_2(test_data[2], (1,))
+    timers = test_5(test_data[5], (1, 2))
     for timer in timers:
         log_info(timer.all())
 

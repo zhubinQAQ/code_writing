@@ -12,23 +12,44 @@ class Solution(object):
         :rtype: str
         """
         if len(s) < 2: return s
-        right = left = 0
-        dp = [[[]] * len(s)] * len(s)
+        right = 0
+        left = 0
+        dp = [[False] * len(s)] * len(s)
         for i in range(len(s)):
             dp[i][i] = True
-            for j in range(i - 1):
-                dp[i][j] = (s[i] == s[j]) and (i == j + 1 or dp[i - 1][j + 1])
+            for j in range(i):
+                dp[i][j] = ((s[i] == s[j]) and (i == j + 1)) or ((s[i] == s[j]) and dp[i - 1][j + 1])
                 if dp[i][j] and (i - j) > (right - left):
                     right = i
                     left = j
-        return s[left:right + 1] if right - left >= 1 else None
+        return s[left:right + 1] if right - left >= 1 else s[0]
 
     def longestPalindrome2(self, s):
         """
         :type s: str
         :rtype: str
         """
-        return 0
+        if len(s) < 2: return s
+        _s = '#'.join(list(s))
+        r = [0] * len(_s)
+        center = 0
+        maxRight = 0
+        maxstr = ''
+        for j in range(1, len(_s) - 1):
+            if j < maxRight:
+                r[j] = min(maxRight - j, r[2 * center - j])
+            if j + r[j] + 1 <= len(_s) - 1:
+                while _s[j - r[j] - 1] == _s[j + r[j] + 1]:
+                    r[j] += 1
+                    if j + r[j] + 1 > len(_s) - 1:
+                        break
+            if j + r[j] > maxRight:
+                maxRight = j + r[j]
+                center = j
+            if len(_s[j - r[j]:j + r[j] + 1].replace('#', '')) > len(maxstr):
+                maxstr = _s[j - r[j]:j + r[j] + 1]
+                maxstr = maxstr.replace('#', '')
+        return maxstr if len(maxstr) > 1 else s[0]
 
 
 def test_5(test_data, solution_num):
