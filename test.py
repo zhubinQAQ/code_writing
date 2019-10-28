@@ -6,7 +6,7 @@ from codes_stuff.task import *
 def main():
     log_info(' ===== start test =====')
 
-    timers = test_5(test_data[5], (1, 2))
+    timers = test_8(test_data[8], (1, ))
     for timer in timers:
         log_info(timer.all())
 
